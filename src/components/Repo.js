@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 
 export default class Repo extends Component {
+  
+  delRepo =()=>{
+    console.log('mohammad');
+  }
+
+  
   render() {
     const {repo} = this.props
     return (
-      <tr style={{ border: '3px red solid' }}>
-        {/* <h6>Repo</h6> */}
-        
+      <tr>        
         <td>
             {repo.id}  
           </td>  
@@ -19,8 +23,10 @@ export default class Repo extends Component {
           <td>
             {repo.language}  
           </td>
+          <td>
+            <button onClick={this.delRepo} className="btn btn-danger" >Delete</button>
+          </td>
         </tr>
-      
     );
   }
 }

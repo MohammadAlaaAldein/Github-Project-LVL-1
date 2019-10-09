@@ -3,14 +3,14 @@ import Repo from "./Repo"
 
 export default class Table extends Component {
   render() {
-    const {repos} = this.props
+    const {repos, deleteRepo} = this.props
     
     return (
       <div
         style={{ border: '3px green dotted' }}>
         <h6>Table</h6>
 
-        <table class="table table-striped table-dark">
+        <table className="table table-striped table-dark">
   <thead>
     <tr>
       <th scope="col">ID</th>
@@ -21,27 +21,11 @@ export default class Table extends Component {
     </tr>
   </thead>
   <tbody>
-  {
+    {
       repos.map((repo,i)=>{
-        return < Repo repo = {repo}/>
+        return < Repo key = {repo.id} repo = {repo} deleteRepo = {deleteRepo}/>
       })
     }
-       {/* <Repo elem = {elem} /> */}
-
-  {/* <tr>
-      <th scope="row"></th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th scope="row"></th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr> */}
   </tbody>
 </table>
       </div>

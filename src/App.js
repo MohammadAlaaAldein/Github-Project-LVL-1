@@ -19,12 +19,18 @@ export default class App extends Component {
       }
     ]
   };
+
+  deleteRepo =ID=>{
+    console.log("Deleted");
+  }
+
   render() {
     const {repos} = this.state
+    const {deleteRepo} = this.deleteRepo
     return (
       <div style={{ border: 'black 1px solid' }}>
         <h6>App</h6>
-        <Table repos = {repos} />
+        <Table repos = {repos} deleteRepo = {deleteRepo} />
       </div>
     );
   }
