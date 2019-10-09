@@ -4,13 +4,13 @@ import Repo from "./Repo"
 export default class Table extends Component {
   render() {
     const {repos} = this.props
-    // console.log(this.props.repos)
+    
     return (
       <div
         style={{ border: '3px green dotted' }}>
         <h6>Table</h6>
 
-        <table repos = {repos} class="table table-striped table-dark">
+        <table class="table table-striped table-dark">
   <thead>
     <tr>
       <th scope="col">ID</th>
@@ -21,8 +21,12 @@ export default class Table extends Component {
     </tr>
   </thead>
   <tbody>
-    
-      <tr> <Repo repos = {repos} /></tr>
+  {
+      repos.map((repo,i)=>{
+        return < Repo repo = {repo}/>
+      })
+    }
+       {/* <Repo elem = {elem} /> */}
 
   {/* <tr>
       <th scope="row"></th>

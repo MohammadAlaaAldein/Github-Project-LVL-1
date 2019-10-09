@@ -2,25 +2,25 @@ import React, { Component } from 'react';
 
 export default class Repo extends Component {
   render() {
-    const {repos} = this.props
+    const {repo} = this.props
     return (
-      <div style={{ border: '3px red solid' }}>
+      <tr style={{ border: '3px red solid' }}>
         {/* <h6>Repo</h6> */}
-        {/* <tr> */}
+        
         <td>
-            {repos[1].id}  
+            {repo.id}  
           </td>  
           <td>
-            {repos[1].title}  
+            {repo.title}  
           </td>  
           <td>
-            {repos[1].status}  
+            {repo.status}  
           </td>  
           <td>
-            {repos[1].id}  
-          </td>  
-        {/* </tr> */}
-      </div>
+            {repo.language}  
+          </td>
+        </tr>
+      
     );
   }
 }
