@@ -1,32 +1,32 @@
 import React, { Component } from 'react';
 
 export default class Repo extends Component {
-  
-  delRepo =()=>{
-    console.log('mohammad');
-  }
 
-  
   render() {
-    const {repo} = this.props
+    const { deleteRepo, repo } = this.props
     return (
-      <tr>        
+      <tr>
         <td>
-            {repo.id}  
-          </td>  
-          <td>
-            {repo.title}  
-          </td>  
-          <td>
-            {repo.status}  
-          </td>  
-          <td>
-            {repo.language}  
-          </td>
-          <td>
-            <button onClick={this.delRepo} className="btn btn-danger" >Delete</button>
-          </td>
-        </tr>
+          {repo.id}
+        </td>
+        <td>
+          {repo.title}
+        </td>
+        <td>
+          {repo.status}
+        </td>
+        <td>
+          {repo.language}
+        </td>
+        <td>
+          <button onClick={()=>deleteRepo(repo.id)} className="btn btn-danger" >Delete</button>
+        </td>
+      </tr>
     );
   }
 }
+
+
+
+// <button onClick={()=>deleteRepo(repo.id)} ID={repo.id}
+// ID={repo.id} className="btn btn-danger" >Delete</button>
