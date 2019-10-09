@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Table from "./components/Table";
+import "bootstrap/dist/css/bootstrap.css"
 
 export default class App extends Component {
   state = {
@@ -18,9 +20,11 @@ export default class App extends Component {
     ]
   };
   render() {
+    const {repos} = this.state
     return (
       <div style={{ border: 'black 1px solid' }}>
         <h6>App</h6>
+        <Table repos = {repos} />
       </div>
     );
   }
