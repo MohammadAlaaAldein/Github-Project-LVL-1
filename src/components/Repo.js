@@ -13,13 +13,21 @@ export default class Repo extends Component {
           {repo.title}
         </td>
         <td>
-          {repo.status}
+          {repo.status.toUpperCase()}
+        </td>
+        <td>
+          <input type="checkbox"
+            onClick={() => this.props.toggleStatus(repo.id)}
+          />
+        </td>
+        <td>
+          {repo.status === "Private" ? "YES" : "NO"}
         </td>
         <td>
           {repo.language}
         </td>
         <td>
-          <button onClick={()=>deleteRepo(repo.id)} className="btn btn-danger" >Delete</button>
+          <button onClick={() => deleteRepo(repo.id)} className="btn btn-danger" >Delete</button>
         </td>
       </tr>
     );

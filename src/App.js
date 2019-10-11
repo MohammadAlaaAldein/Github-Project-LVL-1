@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Table from "./components/Table";
+import Add from "./components/Add"
 import "bootstrap/dist/css/bootstrap.css"
+
 
 export default class App extends Component {
   state = {
@@ -20,22 +22,45 @@ export default class App extends Component {
     ]
   };
 
+  addRepo = (newState) => {
+    this.state.repos.push(newState)
+    this.setState({repos: this.state.repos})
+  
+  }
+
   deleteRepo = ID => {
     let newState = this.state.repos.filter(elem => {
-      return ID !== elem.id
+      return elem.id !== ID
     })
-    this.setState({repos: newState})
+    this.setState({ repos: newState })
   }
-  
+
+  toggleStatus = id => {
+    let repos = this.state.repos.map(elem => {
+      if (elem.id === id) {
+        if (elem.status === 'Private') {
+          elem.status = 'Public';
+        }
+        else {
+          elem.status = 'Private';
+        }
+      }
+      return elem
+    })
+    this.setState({ repos })
+  }
+
+
 
   render() {
     const { repos } = this.state
-    const { deleteRepo } = this.deleteRepo
+    const { deleteRepo } = this
     return (
-      <div style={{ border: 'black 1px solid' }}>
-        <h6>App</h6>
-        <Table repos={repos} deleteRepo={this.deleteRepo} />
-        <button onClick={this.deleteRepo} >Delete Test</button>
+      <div >
+        {/* <h6>App</h6> */}
+        <Add addRepo = {this.addRepo} />
+        <Table repos={repos} deleteRepo={deleteRepo} toggleStatus={this.toggleStatus}  />
+        {/* <button onClick={this.deleteRepo} >Delete Test</button> */}
       </div>
     );
   }
