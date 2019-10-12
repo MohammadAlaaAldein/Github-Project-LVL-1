@@ -4,7 +4,7 @@ export default class Add extends Component {
 
   state = {
 
-    id: 4,
+    id: this.props.repos[this.props.repos.length - 1].id + 1,
     title: '',
     status: '',
     language: ''
@@ -29,57 +29,61 @@ export default class Add extends Component {
 
   sendState = () => {
     this.props.addRepo(this.state)
-    this.setState({title:"",status:"",language:""})
-    
-   
+    this.setState({ id: this.state.id + 1, title: "", status: "", language: "" })
+
   }
 
- 
+
 
   render() {
     return (
-      <div >
-        <div class="form-row">
-          <div class="col">
-            <input
-              type="text"
-              class="form-control"
-              id="repo-tilte"
-              name="repoTilte"
-              placeholder="Repo Title"
-              onChange={this.changeTitle}
-            />
-          </div>
-          <div class="col">
-            <input
-              type="text"
-              id="repo-language"
-              name="repoLanguage"
-              class="form-control"
-              placeholder="Repo language"
-              onChange={this.changeLanguage}
-            />
-          </div>
-          <div class="col">
-            <div className="form-group col-md-8">
-              <select
+      <div>
+        <form action="#" >
+          <div className="form-row">
+            <div className="col">
+              <input
+                type="text"
                 className="form-control"
-                id="repoStatus"
-                name="Repo Status"
-                onChange={this.changeStatus}
-
-              >
-                <option>Repo Status (Private/Public)</option>
-                <option>Private</option>
-                <option>Public</option>
-              </select>
+                id="repo-tilte"
+                name="repoTilte"
+                placeholder="Repo Title"
+                onChange={this.changeTitle}
+                required
+              />
             </div>
+            <div className="col">
+              <input
+                type="text"
+                id="repo-language"
+                name="repoLanguage"
+                className="form-control"
+                placeholder="Repo language"
+                onChange={this.changeLanguage}
+                required
+              />
+            </div>
+            <div className="col">
+              <div className="form-group col-md-8">
+                <select
+                  className="form-control"
+                  id="repoStatus"
+                  name="Repo Status"
+                  onChange={this.changeStatus}
+                  required
 
-            <div className="form-group col-md-2">
-              <input onClick={()=>this.sendState()} type="submit" value="Submit" className="btn btn-info" />
+                >
+                  <option>Repo Status (Private/Public)</option>
+                  <option>Private</option>
+                  <option>Public</option>
+                </select>
+              </div>
+
+              <div className="form-group col-md-2">
+                <input onClick={this.sendState} type="submit" value="Submit" className="btn btn-info" />
+              </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     );
   }

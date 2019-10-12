@@ -24,8 +24,8 @@ export default class App extends Component {
 
   addRepo = (newState) => {
     this.state.repos.push(newState)
-    this.setState({repos: this.state.repos})
-  
+    this.setState({ repos: this.state.repos })
+
   }
 
   deleteRepo = ID => {
@@ -56,10 +56,10 @@ export default class App extends Component {
     const { repos } = this.state
     const { deleteRepo } = this
     return (
-      <div >
+      <div className="container" >
         {/* <h6>App</h6> */}
-        <Add addRepo = {this.addRepo} />
-        <Table repos={repos} deleteRepo={deleteRepo} toggleStatus={this.toggleStatus}  />
+        <Add addRepo={this.addRepo} repos={repos} />
+        <Table repos={repos} deleteRepo={deleteRepo} toggleStatus={this.toggleStatus} />
         {/* <button onClick={this.deleteRepo} >Delete Test</button> */}
       </div>
     );
